@@ -1,0 +1,12 @@
+{
+  "name": "eclinicforyou",
+  "displayName": "eclinicforyou",
+  "expo": {
+    "name": "eclinicforyou",
+    "slug": "eclinicforyou",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

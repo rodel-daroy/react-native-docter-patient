@@ -1,0 +1,36 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/react-native-unimodules/cocoapods.rb'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+#source 'https://github.com/CocoaPods/Specs.git'
+
+platform :ios, '10.0'
+
+target 'eclinicforyou' do
+  use_unimodules!
+  config = use_native_modules!
+
+  use_react_native!(:path => config["reactNativePath"])
+
+  node_modules_path = '../node_modules'
+  
+  pod 'RNOpenTok', path: "#{node_modules_path}/react-native-opentok/ios"
+  pod 'RNVectorIcons', path: "#{node_modules_path}/react-native-vector-icons"
+
+  # React Native Maps dependencies
+  pod 'GoogleMaps'
+  rn_maps_path = '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', :path => rn_maps_path
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+
+  # Enables Flipper.
+  #
+  # Note that if you have use_frameworks! enabled, Flipper will not work and
+  # you should disable these next few lines.
+  use_flipper!
+  post_install do |installer|
+    flipper_post_install(installer)
+  end
+end
+
